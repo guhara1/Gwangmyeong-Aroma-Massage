@@ -3,6 +3,8 @@
 from .site import BASE_URL, BRAND, PHONE, PHONE_DISPLAY
 from .pricing import PRICING
 
+_NAVER = '<meta name="naver-site-verification" content="d64ae524a8b8945251bfa72721bd015d3286eed5" />\n'
+
 _JSONLD = f"""<script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -181,7 +183,7 @@ PAGE = {
     "desc": "광명 출장마사지·홈타이 예약 전 대표 동, 역세권, 이용 기준을 정리했습니다.",
     "h1": "광명 출장마사지 · 광명시 홈타이 지역별 예약 안내",
     "body": _BODY,
-    "extra_head": _JSONLD,
+    "extra_head": _NAVER + _JSONLD,
     "breadcrumb": [],
     "hero": _HERO,
 }
