@@ -1,0 +1,29 @@
+name: IndexNow 색인 통보
+
+# main(프로덕션) 배포 시 변경된 사이트의 URL을 빙·네이버 등에 즉시 통보한다.
+# Cloudflare Pages 프로덕션 도메인(pages.dev)이 main 기준이므로 main에서만 동작한다.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/index.html"
+      - "sitemap.xml"
+      - "rss.xml"
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Cloudflare Pages 배포가 끝나 키 파일/페이지가 게시될 시간을 잠시 확보
+      - name: Wait for deploy
+        run: sleep 60
+
+      - name: Submit sitemap URLs to IndexNow
+        run: python3 tools/indexnow.py

@@ -45,7 +45,14 @@
 python3 build.py
 ```
 
-`sitemap.xml`, `robots.txt`, `.nojekyll` 가 자동 생성됩니다. GitHub Pages 등 정적 호스팅에 그대로 배포할 수 있습니다.
+`sitemap.xml`, `rss.xml`, `robots.txt`, IndexNow 키 파일, `.nojekyll` 가 자동 생성됩니다. Cloudflare Pages 등 정적 호스팅에 그대로 배포할 수 있습니다.
+
+## 색인(인덱싱)
+
+네이버·구글·빙 등록과 IndexNow 즉시 통보 설정은 [INDEXING.md](INDEXING.md) 를 참고하세요.
+- `python3 tools/indexnow.py` — 빙·네이버·얀덱스 즉시 통보(키 파일 기반)
+- `python3 tools/google_indexing.py` — 구글 Indexing API(서비스 계정 필요)
+- `.github/workflows/indexnow.yml` — main 배포 시 IndexNow 자동 통보
 
 ## 배포 전 설정
 
